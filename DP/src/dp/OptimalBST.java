@@ -16,6 +16,7 @@ public class OptimalBST {
         int keys[] = {10, 12, 20};
         int freq[] = {34, 8, 50};
         System.out.println(optimalBinarySearchTree(keys, freq));
+        System.out.println("done coding");
     }
 
     public static int optimalBinarySearchTree(int input[],int freq[])
