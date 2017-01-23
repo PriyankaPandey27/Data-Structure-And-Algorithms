@@ -11,6 +11,7 @@ package Graph;
  */
 
 
+
 class AdjListNodeBellmond
 {
     int dest;
@@ -39,7 +40,7 @@ class GraphBellmond
     int V;
     AdjListBellmond[] array;
     int edgeWeight[][];
-    private static int distance[]=null;
+    public static int distance[]=null;
 
     public GraphBellmond(int v) {
         V=v;
@@ -95,6 +96,15 @@ class GraphBellmond
 
     }
 
+     public void removeEdge(int s)
+    {
+     // Add an edge from src to dest.  A new node is added to the adjacency
+    // list of src.  The node is added at the begining
+
+        array[s].head=array[s].head.next;
+
+     }
+
     public void printGraph(String message)
     {
         System.out.println("** "+ message+ " **");
@@ -111,6 +121,55 @@ class GraphBellmond
 
             System.out.println();
         }
+    }
+
+    public int addNewEdge(int s,int w,int end)
+    {
+        boolean visit[]=new boolean[V];
+
+        AdjListNodeBellmond pCrawl=array[s].head;
+//        System.out.println("pCrawal " + pCrawl.dest);
+        visit[s]=true;
+        while(pCrawl!=null)
+        {
+            visit[pCrawl.dest]=true;
+            pCrawl=pCrawl.next;
+
+        }
+        int min=distance[end];
+//        System.out.println("min intitial  " + min);
+        for(int i=1;i<V;i++)
+        {
+//            System.out.println("visit[i] = " + visit[i]);
+            if(visit[i]==false && i!=s)
+            {
+                addEdgeBellmond(s,i, w);
+                AdjListNodeBellmond dude=array[s].head;
+//        System.out.println("pCrawal " + pCrawl.dest);
+        visit[s]=true;
+        while(dude!=null)
+        {
+            visit[dude.dest]=true;
+            System.out.println(dude.dest);
+            dude=dude.next;
+
+        }
+                bellmanFord(s);
+                 System.out.println("min insde loop " + distance[end]);
+                System.out.println("enfd " + end);
+                if(min>distance[end])
+                {
+                   
+                    min=distance[end];
+                }
+                removeEdge(s);
+            }
+
+        }
+
+//        System.out.println("min cost path " + min);
+        return min;
+
     }
 
 
@@ -135,9 +194,15 @@ class GraphBellmond
                      edgeWeight[u][pCrawl.dest]>0)
              {
                 distance[pCrawl.dest] = distance[u]+ edgeWeight[u][pCrawl.dest];
+                // System.out.println("distance insde bellmond "+ distance[pCrawl.dest] + " dest is " + pCrawl.dest);
              }
                 pCrawl=pCrawl.next;
             }
+        }
+
+        for(int j=1;j<V;j++)
+        {
+            System.out.println("distance from 1 " + distance[j]);
         }
         // Step 3: check for negative-weight cycles.  The above
         // step guarantees shortest distances if graph doesn't
@@ -229,7 +294,7 @@ class BellmanFord {
       // Directed Graph
       g.addEdgeBellmond(1, 2,1);
       //g.addEdge(1, 3,4);
-      g.addEdgeBellmond(3, 1, -10);
+      g.addEdgeBellmond(3, 1, 10);
       g.addEdgeBellmond(2, 3,3);
       g.addEdgeBellmond(2, 4, 2);
       g.addEdgeBellmond(4, 2, 1);
@@ -239,8 +304,26 @@ class BellmanFord {
 
      // g.printGraph("Graph");
       g.bellmanFord(1);
-      g.printBellmanFordDistance("After Bellman Ford algo");
+//      g.printBellmanFordDistance("After Bellman Ford algo");
 //      g.isGraphContainsNegativeWeightCycle();
 //      g.printNegativeWeightCycle();
+//     int a[]={2,4,3,4,5};
+//     int b[]={1,1,2,3,4};
+//     int w[]={2,4,1,3,1};
+//     minCost(5, a, b, w, 1, 4, 2);
+ }
+
+ public static int minCost(int g_nodes, int[] g_from, int[] g_to, int[] g_weight, int start, int end, int w_extra)
+ {
+
+     GraphBellmond g=new GraphBellmond(g_nodes+1);
+     for(int i=0;i<g_from.length;i++)
+     {
+         g.addEdgeBellmond(g_to[i],g_from[i] ,g_weight[i]);
+     }
+     g.bellmanFord(start);
+     return  g.addNewEdge(start, w_extra, end);
+//     System.out.println(g.distance[end]);
+//     return g.distance[end];
  }
 }

@@ -31,9 +31,9 @@ public class BottomView {
         root.left.right.right = new TreeNode(14);
         BottomViewOfTree tree = new BottomViewOfTree(root);
         System.out.println("Bottom view of the given binary tree:");
-       // tree.bottomView(root);
+        tree.bottomView(root);
         //tree.verticalOrder(root);
-        tree.iPostorder(root);
+        //tree.iPostorder(root);
     }
 
 

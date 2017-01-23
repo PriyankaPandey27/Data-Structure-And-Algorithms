@@ -46,9 +46,16 @@ public class GraphTree {
         }
 
 
+
+
     
 
     }
+
+        public static void checkTree(int v)
+        {
+            Graph g1=new Graph(v+1);
+        }
 
 }
 

@@ -13,7 +13,7 @@ public class rodCutting {
 
     public static void main(String[] args) {
         int p[]={1, 5, 8, 9, 10, 17, 17, 20};
-        System.out.println("the maximum sum of a rod is  " + naive(p, p.length));
+        //System.out.println("the maximum sum of a rod is  " + naive(p, p.length));
         System.out.println("the maximum sum of a rod using dp " + dp_RodCutting(p, p.length));
 
     }
@@ -26,6 +26,7 @@ public class rodCutting {
         for(int i=0;i<n;i++)
         {
             maxValue=Math.max(maxValue, p[i]+naive(p, n-i-1));
+            System.out.println("max value " + maxValue + " -----i " + i);
         }
 
         return maxValue;

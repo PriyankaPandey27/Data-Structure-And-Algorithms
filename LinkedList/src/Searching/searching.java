@@ -44,7 +44,8 @@ public class searching {
 
         int l[]={1,1,1,2,3,3,4,5,5,5,7,7,8,8};
       //  System.out.println(" second smallest element is "+ findPrevSmallestFreq(l, 0, l.length-1, 7,0,l.length-1));
-       // int m=LastOccurrance(l,0,l.length-1,8);
+        int m=LastOccurrance(l,0,l.length-1,8);
+        System.out.println(m);
       // occurrrence(l, 0, 9, 5);
 
 //        int swap[]={12, 34, 45, 9, 8, 90, 3};
@@ -67,7 +68,7 @@ public class searching {
         int r[]={1,1,1,3,3,4,5,5,5,5,6,6,7,8,8,8,8,8,8,9,9,9,11,11,11};
        // System.out.println("array is rotated by " + timesOfRotation(r, 0, r.length-1,0,r.length-1));
       // System.out.println("the array is rotated by " + findAfterRotation(r, 0, r.length-1, 8));
-        System.out.println("next greater element " + findNextLargest(r, 0, r.length-1,9,r.length-1,0));
+       // System.out.println("next greater element " + findNextLargest(r, 0, r.length-1,9,r.length-1,0));
 
 
     }

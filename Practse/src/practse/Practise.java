@@ -26,18 +26,20 @@ public class Practise {
 //        mergeSort(a,0,a.length-1);
 //        System.out.println("after sorting :::" + Arrays.toString(a));
         //int b[]={8, 12, 16, 4, 0, 20};
-        int p[]={1,2,3,4,5,6,7,8,9,10};
+       // int p[]={1,2,3,4,5,6,7,8,9,10};
+        int arr[]={1,2,1};
+        System.out.println(maxElement(arr));
        // sum(b,5);
         //sub(b,4);
        // int n=8;
        // countCell(n,8);
 
-         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-       BufferedOutputStream bos = new BufferedOutputStream(System.out);
-       String input[]= br.readLine().split(" ");
-       int n=Integer.parseInt(input[0]);
-       int k=Integer.parseInt(input[1]);
-       countCell(n, k);
+//         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//       BufferedOutputStream bos = new BufferedOutputStream(System.out);
+//       String input[]= br.readLine().split(" ");
+//       int n=Integer.parseInt(input[0]);
+//       int k=Integer.parseInt(input[1]);
+//       countCell(n, k);
 
     }
 
@@ -167,6 +169,33 @@ public class Practise {
         bos.write(c +"\n");
         bos.flush();
     }
+
+
+
+   public static int maxElement(int arr[])
+   {
+       int n=arr.length;
+       mergeSort(arr, 0, n-1);
+       int j=0;
+       int k=n-2;
+       int l;
+       for(l=n-1;l>1;l--)
+       {
+           j=0;k=l-1;
+           while(j<k)
+           {
+           if(arr[j]+arr[k]==arr[l])
+               return arr[l];
+           else if(arr[j]+arr[k]<arr[l])
+               j++;
+           else if(arr[j]+arr[k]>arr[l])
+               k--;
+           }          
+
+       }
+
+       return -1;
+   }
 
 
 }

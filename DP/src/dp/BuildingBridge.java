@@ -50,7 +50,7 @@ public class BuildingBridge {
 
         int lis[]=new int[n.length];
         lis=initialise(lis);
-        int ans=1;
+        int ans=Integer.MIN_VALUE;
         int index[]=new int[n.length];
         fillIndices(n, s, index);
 
@@ -58,9 +58,9 @@ public class BuildingBridge {
         {
             for(int j=0;j<i;j++)
             {
-                if(index[j]<index[i])
+                if(index[j]<index[i] && lis[i]<lis[j]+1)
                 {
-                    lis[i]=Math.max(lis[i], lis[j]+1);
+                    lis[i]=lis[j]+1;
                     ans=Math.max(lis[i], ans);
                 }
             }

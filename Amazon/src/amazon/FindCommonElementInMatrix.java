@@ -17,8 +17,8 @@ public class FindCommonElementInMatrix {
     
     public static void main(String[] args) {
         
-        int m[][]={{1, 2, 3, 4, 5},
-                    {2, 3, 5, 8, 10},
+        int m[][]={{1, 2, 3, 4, 3},
+                    {2, 3, 3, 3, 3},
                     {2, 5, 5, 9, 11},
                     {1, 3, 5, 7, 9} };
         

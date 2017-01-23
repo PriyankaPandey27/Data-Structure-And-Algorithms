@@ -11,13 +11,18 @@ package SingletonPattern;
  */
 public class SingleObject {
 
-    public static SingleObject single1=new SingleObject();
+    private static SingleObject single1=new SingleObject();
     private SingleObject()
     {
 
     }
 
-    public void showMessage()
+    public static SingleObject getInstance()
+    {
+        return single1;
+    }
+
+    public static void showMessage()
     {
         System.out.println("show the message inside singleton");
     }

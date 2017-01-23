@@ -25,7 +25,8 @@ import java.util.Vector;
 
        // System.out.println(arr.length);
      
-     findSameContact(arr, arr.length);
+    findSameContact(arr, arr.length);
+     
 
 
     }

@@ -13,7 +13,7 @@ public class LongestPalindromicSubsequence {
 
     public static void main(String[] args) {
 
-        String s="BBABCBCAB";
+        String s="BABCBCA";
         System.out.println("the length is " + naive(s.toCharArray(), 0, s.length()-1));
         lps_Dp(s.toCharArray(), s.length());
         //naive(s.toCharArray(), 0, s.length()-1);
